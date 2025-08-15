@@ -8,7 +8,6 @@ const connectToMongo = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        console.log("Connected to Mongo Successfully");
     } catch (error) {
         console.error("Error connecting to Mongo:", error);
         process.exit(1);
