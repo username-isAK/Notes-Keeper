@@ -1,10 +1,10 @@
-import Addnote from "./Components/Addnote"
+import Notes from "./Components/Notes"
 import Notestate from "./context/Notestate"
 function App() {
 
   return (
     <Notestate>
-     <Addnote/>
+     <Notes/>
     </Notestate>
   )
 }
