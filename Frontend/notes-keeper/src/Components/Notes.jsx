@@ -3,7 +3,7 @@ import noteContext from '../context/notecontext';
 import Noteitem from './Noteitem';
 import AddNote from './Addnote';
 
-const Notes = () => {
+const Notes = ({showAlert}) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
 
@@ -30,8 +30,12 @@ const Notes = () => {
   };
 
   const handleClick = () => {
-    editNote(note.id, note.etitle, note.edescription, note.etag);
+    try{editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+    showAlert("Note updated succesfully","success")}
+    catch{
+      showAlert("Failed to update note","danger")
+    }
   };
 
   const onChange = (e) => {
@@ -40,7 +44,7 @@ const Notes = () => {
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={showAlert}/>
 
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#editNoteModal"></button>
 

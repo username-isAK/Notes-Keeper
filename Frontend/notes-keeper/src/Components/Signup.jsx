@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({setIsAuthenticated}) => {
+const Signup = ({setIsAuthenticated, showAlert}) => {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
 
@@ -22,18 +22,15 @@ const Signup = ({setIsAuthenticated}) => {
 
     console.log("Signup response:", json); 
 
-if (json.authtoken) {
-  localStorage.setItem("token", json.authtoken);
-  setIsAuthenticated(true)
-  navigate("/");
-} else if (json.errors) {
-
-  alert(json.errors.map(err => err.msg).join(", "));
-} else if (json.error) {
-  alert(json.error);
-} else {
-  alert("Invalid details");
-}
+    if (json.authtoken) {
+      localStorage.setItem("token", json.authtoken);
+      setIsAuthenticated(true)
+      showAlert("Signup Success","success")
+      navigate("/");
+    }
+    else {
+      showAlert("Signup Failed","danger")
+    }
   };
 
   const onChange = (e) => {

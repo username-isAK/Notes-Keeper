@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({showAlert}) => {
   const fullText = "A Secure Cloud Based Notes Manager";
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
@@ -32,6 +32,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    showAlert("Logout success","success")
     navigate("/login");
   };
 
@@ -39,23 +40,20 @@ const Navbar = () => {
     <div>
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid d-flex justify-content-between align-items-center">
-          {/* Logo + Text */}
           <a className="navbar-brand d-flex align-items-center">
             <img
               src="/NK logo.png"
               alt="Logo"
               width="250"
               height="65"
-              className="d-inline-block ms-5"
-            />
+              className="d-inline-block ms-5"/>
             <span
               className="ms-3"
               style={{
                 fontFamily: "'Times New Roman', Times, serif",
                 fontSize: "2rem",
                 whiteSpace: "pre",
-              }}
-            >
+              }}>
               {displayText}
               {showCursor && <span className="cursor">|</span>}
             </span>

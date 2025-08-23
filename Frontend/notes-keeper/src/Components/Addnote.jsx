@@ -1,14 +1,19 @@
 import {useContext, useState} from 'react'
 import noteContext from "../context/notecontext"
 
-const Addnote = () => {
+const Addnote = (props) => {
   const context = useContext(noteContext);
   const {addNote} = context;
   const [note, setNote] = useState({title: "", description: "", tag: ""})
   const handleClick = (e)=>{
         e.preventDefault();
+        try{
         addNote(note.title, note.description, note.tag);
         setNote({title: "", description: "", tag: ""})
+        props.showAlert("Successfully added a note","success")}
+        catch{
+            props.showAlert("Failed to add note","danger")
+        }
     }
 
     const onChange = (e)=>{
