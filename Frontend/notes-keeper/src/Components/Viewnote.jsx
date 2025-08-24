@@ -39,7 +39,10 @@ const Viewnote = ({ note, onClose }) => {
           </div>
 
           <div className="modal-body">
-            <p style={{ fontFamily: 'cursive'}}>{note.description}</p>
+            {note.description.includes("\n") ? (
+              <ul style={{ fontFamily: 'cursive' }}>
+                {note.description.split("\n").map((line, index) => (
+                  <li key={index}>{line}</li>))}</ul>) : (<p style={{ fontFamily: 'cursive' }}>{note.description}</p>)}
             <small className="text-muted" style={{ fontFamily: 'cursive'}}>{note.tag}</small>
             <div className="modal-footer">
             <button className="btn btn-link" onClick={exportPDF}>

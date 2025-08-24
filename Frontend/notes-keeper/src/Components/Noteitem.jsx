@@ -25,7 +25,7 @@ const Noteitem = (props) => {
     };
 
     return (
-        <div className="col-md-3">
+        <div className="col-md-3" style={{marginRight:'1rem'}}>
             <div className="card my-3" style={{width: '20rem',boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)'}}>
                 <div className="card-body" style={{backgroundColor: '#fcfaeb'}}>
                     <div className="d-flex align-items-center">

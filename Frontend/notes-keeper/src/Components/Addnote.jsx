@@ -29,7 +29,21 @@ const Addnote = (props) => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label" style={{ fontFamily: 'cursive'}}>Description</label>
-                    <input type="text" className="form-control" id="description" name="description" value={note.description} onChange={onChange} minLength={5} required />
+                    <textarea
+                        className="form-control"
+                        id="description"
+                        name="description"
+                        value={note.description}
+                        onChange={onChange}
+                        minLength={5}
+                        required
+                        rows={3}
+                        style={{
+                        resize: "vertical",
+                        maxHeight: "11rem",
+                        overflowY: "auto"
+                        }}
+                    ></textarea>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tag" className="form-label" style={{ fontFamily: 'cursive'}}>Tag</label>
