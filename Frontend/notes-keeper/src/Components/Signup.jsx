@@ -39,26 +39,26 @@ const Signup = ({setIsAuthenticated, showAlert}) => {
 
   return (
     <div className="container" style={{ maxWidth: "35rem" }}>
-      <h1 className="container m-3" style={{ textAlign: 'center' }}>Welcome to Notes Keeper!</h1>
-      <h3 className="m-3" style={{ textAlign: 'center' }}>Create an Account</h3>
+      <h1 className="container m-3" style={{ fontFamily: 'cursive',textAlign: 'center',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Welcome to Notes Keeper!</h1>
+      <h3 className="m-3" style={{ fontFamily: 'cursive',textAlign: 'center',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Create an Account</h3>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
+          <label htmlFor="name" className="form-label" style={{ fontFamily: 'cursive'}}>Name</label>
           <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} />
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
+          <label htmlFor="email" className="form-label" style={{ fontFamily: 'cursive'}}>Email</label>
           <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} />
         </div>
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
+          <label htmlFor="password" className="form-label" style={{ fontFamily: 'cursive'}}>Password</label>
           <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={onChange} />
           <div id="emailHelp" className="form-text">Minimum 8 characters.</div>
         </div>
         <button type="submit" className="btn btn-primary">Signup</button>
       </form>
       <div className="mt-3">
-        <p>Already have an account?</p>
+        <p style={{ fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Already have an account?</p>
         <button className="btn btn-secondary" onClick={() => navigate("/login")}>Login</button>
      </div>
     </div>

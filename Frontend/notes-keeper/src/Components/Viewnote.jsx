@@ -8,8 +8,8 @@ const Viewnote = ({ note, onClose }) => {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
  
-          <div className="modal-header d-flex justify-content-between align-items-center">
-            <h5 className="modal-title">{note.title}</h5>
+          <div className="modal-header d-flex justify-content-between align-items-center" style={{backgroundColor: '#fcfaeb' }}>
+            <h5 className="modal-title" style={{ fontFamily: 'cursive'}}>{note.title}</h5>
             <i
               className="bi bi-x-lg"
               style={{ cursor: "pointer", fontSize: "1.2rem" }}
@@ -18,8 +18,8 @@ const Viewnote = ({ note, onClose }) => {
           </div>
 
           <div className="modal-body">
-            <p>{note.description}</p>
-            <small className="text-muted">{note.tag}</small>
+            <p style={{ fontFamily: 'cursive'}}>{note.description}</p>
+            <small className="text-muted" style={{ fontFamily: 'cursive'}}>{note.tag}</small>
           </div>
         </div>
       </div>

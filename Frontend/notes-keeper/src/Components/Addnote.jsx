@@ -21,18 +21,18 @@ const Addnote = (props) => {
     }
     return (
         <div className="container my-3">
-            <h2>Add a Note</h2>
+            <h2 style={{ display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Add a Note</h2>
             <form className="my-3">
                 <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
+                    <label htmlFor="title" className="form-label" style={{ fontFamily: 'cursive'}}>Title</label>
                     <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" value={note.title} onChange={onChange} minLength={5} required /> 
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="description" className="form-label">Description</label>
+                    <label htmlFor="description" className="form-label" style={{ fontFamily: 'cursive'}}>Description</label>
                     <input type="text" className="form-control" id="description" name="description" value={note.description} onChange={onChange} minLength={5} required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="tag" className="form-label">Tag</label>
+                    <label htmlFor="tag" className="form-label" style={{ fontFamily: 'cursive'}}>Tag</label>
                     <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={5} required />
                 </div>
                

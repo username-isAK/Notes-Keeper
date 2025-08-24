@@ -13,13 +13,12 @@ const Navbar = ({showAlert}) => {
     let i = 0;
     const interval = setInterval(() => {
       if (i < fullText.length) {
-        setDisplayText((prev) => prev + fullText.charAt(i));
+        setDisplayText(fullText.substring(0, i + 1));
         i++;
       } else {
         clearInterval(interval);
       }
     }, 100);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -38,28 +37,28 @@ const Navbar = ({showAlert}) => {
 
   return (
     <div>
-      <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid d-flex justify-content-between align-items-center">
-          <a className="navbar-brand d-flex align-items-center">
+      <nav className="navbar" style={{width:'auto',backgroundColor:'#fcfaeb'}}>
+        <div className="container-fluid d-flex justify-content-between align-items-center flex-wrap">
+          <a className="navbar-brand d-flex align-items-center flex-wrap">
             <img
               src="/NK logo.png"
               alt="Logo"
-              width="250"
-              height="65"
+              width="250rem"
+              height="70rem"
               className="d-inline-block ms-5"/>
             <span
               className="ms-3"
               style={{
-                fontFamily: "'Times New Roman', Times, serif",
-                fontSize: "2rem",
-                whiteSpace: "pre",
+                fontFamily: "cursive",
+                fontSize: "clamp(1rem, 2.5vw, 2rem)",
+                whiteSpace: "pre-wrap"
               }}>
               {displayText}
               {showCursor && <span className="cursor">|</span>}
             </span>
           </a>
 
-          <div className="me-5">
+          <div className="ms-auto">
               <button onClick={handleLogout} className="btn btn-danger">
                 Logout
               </button>

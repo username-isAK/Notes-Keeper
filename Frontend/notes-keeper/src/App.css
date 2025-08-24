@@ -1,0 +1,16 @@
+form {
+  max-width: 95rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fcfaeb;
+  border-radius: 1rem;
+  box-shadow: 0 .25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+body{
+   background-image: url('/bgimg.png');
+   background-attachment: fixed;
+   background-size: cover;
+   background-repeat: repeat;
+   background-position: center;
+}

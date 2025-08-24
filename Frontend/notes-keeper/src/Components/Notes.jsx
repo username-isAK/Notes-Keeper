@@ -51,22 +51,22 @@ const Notes = ({showAlert}) => {
       <div className="modal fade" id="editNoteModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
+            <div className="modal-header" style={{backgroundColor: '#fcfaeb' }}>
+              <h5 className="modal-title" id="exampleModalLabel" style={{ fontFamily: 'cursive'}}>Edit Note</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <form className="my-3">
                 <div className="mb-3">
-                  <label htmlFor="etitle" className="form-label">Title</label>
+                  <label htmlFor="etitle" className="form-label" style={{ fontFamily: 'cursive'}}>Title</label>
                   <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="edescription" className="form-label">Description</label>
+                  <label htmlFor="edescription" className="form-label" style={{ fontFamily: 'cursive'}}>Description</label>
                   <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="etag" className="form-label">Tag</label>
+                  <label htmlFor="etag" className="form-label" style={{ fontFamily: 'cursive'}}>Tag</label>
                   <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} />
                 </div>
               </form>
@@ -80,7 +80,7 @@ const Notes = ({showAlert}) => {
       </div>
 
       <div className="container my-3">
-        <h2>Your Notes</h2>
+        <h2 className="mt-4" style={{display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Your Notes</h2>
         <div className="row">
           {Array.isArray(notes) && notes.length === 0 && 'No notes to display'}
           {Array.isArray(notes) && notes.map((note) => (

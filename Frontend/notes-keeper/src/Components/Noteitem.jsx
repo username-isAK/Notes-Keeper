@@ -26,16 +26,16 @@ const Noteitem = (props) => {
 
     return (
         <div className="col-md-3">
-            <div className="card my-3">
-                <div className="card-body">
+            <div className="card my-3" style={{width: '20rem',boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)'}}>
+                <div className="card-body" style={{backgroundColor: '#fcfaeb'}}>
                     <div className="d-flex align-items-center">
-                        <h5 className="card-title me-2">{note.title}</h5>
+                        <h5 className="card-title me-2" style={{ fontFamily: 'cursive'}}>{note.title}</h5>
                         <i className="bi bi-eye-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowView(true)}}></i>
                         <i className="bi bi-trash3-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{deleteNote(note._id)}}></i>
                         <i className="bi bi-pencil-square mx-2" style={{ cursor: "pointer" }} onClick={()=>{updateNote(note)}}></i>
                     </div>
-                    <p className="card-text">{truncate(note.description, 20)}</p>
-                    <p className="text-muted">Created on: {formatDate(note.date)}</p>
+                    <p className="card-text" style={{ fontFamily: 'cursive'}}>{truncate(note.description, 20)}</p>
+                    <p className="text-muted" style={{ fontFamily: 'cursive'}}>Created on: {formatDate(note.date)}</p>
                 </div>
             </div>
             {showView && (<ViewNote note={note} onClose={() => setShowView(false)} />)}
