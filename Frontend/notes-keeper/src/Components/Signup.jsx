@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Signup = ({ setIsAuthenticated, showAlert }) => {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", confirmPassword: "" });
@@ -15,7 +16,7 @@ const Signup = ({ setIsAuthenticated, showAlert }) => {
       return;
     }
 
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch(`${API_URL}/api/auth/createuser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
