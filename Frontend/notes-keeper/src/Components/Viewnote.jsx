@@ -44,7 +44,8 @@ const Viewnote = ({ note, onClose }) => {
                   <li key={index}>{line}</li>))}</ul>) : (<p style={{ fontFamily: 'cursive' }}>{note.description}</p>)}
             <small className="text-muted" style={{ fontFamily: 'cursive'}}>{note.tag}</small>
             <div className="modal-footer">
-            <button className="btn btn-link" onClick={exportPDF}>
+            <button className="btn btn-light" onClick={exportPDF} style={{color:"blue"}}>
+              <i class="bi bi-download"></i>
               Export as PDF
             </button>
           </div>

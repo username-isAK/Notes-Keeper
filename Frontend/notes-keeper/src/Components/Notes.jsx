@@ -104,19 +104,19 @@ const Notes = ({showAlert}) => {
 
       <div className="container">
         <div className="d-flex flex-wrap justify-content-between align-items-center my-3">
-        <h2 className="mt-4" style={{display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Your Notes</h2>
+        <h2 className="mt-4" style={{display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.8)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Your Notes</h2>
         <input
             type="text"
             className="form-control"
             placeholder="Search notes by title..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{maxWidth: "30rem",width: "100%",display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}/>
+            style={{maxWidth: "30rem",width: "100%",display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,1)", padding: "0.5rem 0.75rem", borderRadius: "1rem",boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)'}}/>
         </div>
 
         <div
           className="row"
-          style={{fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)",padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
+          style={{fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.8)",padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
           {filteredNotes.length === 0 && "No notes to display"}
           {filteredNotes.map((note) => (
             <Noteitem key={note._id} updateNote={updateNote} note={note} />))}

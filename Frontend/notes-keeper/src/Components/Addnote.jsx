@@ -21,7 +21,7 @@ const Addnote = (props) => {
     }
     return (
         <div className="container my-3">
-            <h2 style={{ display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Add a Note</h2>
+            <h2 style={{ display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.8)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Add a Note</h2>
             <form className="my-3">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label fw-bold" style={{ fontFamily: 'cursive'}}>Title</label>
