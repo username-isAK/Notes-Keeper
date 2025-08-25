@@ -43,14 +43,15 @@ const Navbar = ({showAlert}) => {
             <img
               src="/NK logo.png"
               alt="Logo"
-              width="250rem"
-              height="70rem"
-              className="d-inline-block ms-5"/>
+              className="d-inline-block ms-1 img-fluid"
+              style={{ width: "clamp(100px, 20vw, 250px)",                                        
+                        height: "clamp(80px, 8vh, 100px)", 
+                        objectFit: "contain"}}/>
             <span
-              className="ms-3"
+              className="ms-1"
               style={{
                 fontFamily: "cursive",
-                fontSize: "clamp(1rem, 2.5vw, 2rem)",
+                fontSize: "clamp(1rem, 2vw, 2rem)",
                 whiteSpace: "pre-wrap"
               }}>
               {displayText}
@@ -59,7 +60,9 @@ const Navbar = ({showAlert}) => {
           </a>
 
           <div className="ms-auto">
-              <button onClick={handleLogout} className="btn btn-danger">
+              <button onClick={handleLogout} className="btn btn-danger ms-auto" style={{fontFamily: "cursive",
+                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}>
+                <i class="bi bi-box-arrow-in-left"></i>
                 Logout
               </button>
           </div>

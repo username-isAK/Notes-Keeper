@@ -32,7 +32,7 @@ const Login = ({setIsAuthenticated, showAlert}) => {
     }
 
     return (
-        <div className="container" style={{width: '35rem'}}>
+        <div className="container" style={{ maxWidth: '550px', width: '95%' }}>
             <h1 className="container m-3" style={{ fontFamily: 'cursive', textAlign: 'center', backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Welcome to Notes Keeper!</h1>
             <h3 className="m-3" style={{ fontFamily: 'cursive',textAlign: 'center',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>Please Login to continue</h3>
             <form  onSubmit={handleSubmit} autoComplete="off">
@@ -45,11 +45,11 @@ const Login = ({setIsAuthenticated, showAlert}) => {
                     <label htmlFor="password" className="form-label" style={{ fontFamily: 'cursive'}}>Password</label>
                     <input type="password" className="form-control" value={credentials.password} onChange={onChange} name="password" id="password" autoComplete="new-password"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary" style={{fontFamily: "cursive"}}><i class="bi bi-box-arrow-in-right"></i>Login</button>
             </form>
-            <div className="mt-3">
+            <div className="mt-3 d-flex">
                 <p style={{ fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Don't have an account?</p>
-                <button className="btn btn-secondary" onClick={() => navigate("/signup")}>Signup</button>
+                <button className="btn btn-secondary" onClick={() => navigate("/signup")} style={{height:"15%",fontFamily: "cursive"}}>Signup</button>
             </div>
         </div>
     )

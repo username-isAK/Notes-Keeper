@@ -55,11 +55,11 @@ const Signup = ({setIsAuthenticated, showAlert}) => {
           <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={onChange} />
           <div id="emailHelp" className="form-text">Minimum 8 characters.</div>
         </div>
-        <button type="submit" className="btn btn-primary">Signup</button>
+        <button type="submit" className="btn btn-primary" style={{fontFamily:'cursive'}}><i class="bi bi-person-add"></i>Signup</button>
       </form>
-      <div className="mt-3">
+      <div className="mt-3 d-flex">
         <p style={{ fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Already have an account?</p>
-        <button className="btn btn-secondary" onClick={() => navigate("/login")}>Login</button>
+        <button className="btn btn-secondary" onClick={() => navigate("/login")} style={{height:"15%",fontFamily: "cursive"}}>Login</button>
      </div>
     </div>
   );

@@ -11,6 +11,7 @@ const Notes = ({showAlert}) => {
   const refClose = useRef(null);
 
   const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -37,6 +38,12 @@ const Notes = ({showAlert}) => {
       showAlert("Failed to update note","danger")
     }
   };
+
+  const filteredNotes = Array.isArray(notes)
+    ? notes.filter((n) =>
+        n.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -86,20 +93,33 @@ const Notes = ({showAlert}) => {
               </form>
             </div>
             <div className="modal-footer">
-              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
+              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal" style={{fontFamily: "cursive",
+                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}>Close</button>
+              <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "cursive",
+                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}><i class="bi bi-pen"></i>Update Note</button>
             </div>
           </div>
         </div>
       </div>
 
       <div className="container">
+        <div className="d-flex flex-wrap justify-content-between align-items-center my-3">
         <h2 className="mt-4" style={{display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Your Notes</h2>
-        <div className="row" style={{fontFamily:'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>
-          {Array.isArray(notes) && notes.length === 0 && 'No notes to display'}
-          {Array.isArray(notes) && notes.map((note) => (
-            <Noteitem key={note._id} updateNote={updateNote} note={note} />
-          ))}
+        <input
+            type="text"
+            className="form-control"
+            placeholder="Search notes by title..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{maxWidth: "30rem",width: "100%",display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}/>
+        </div>
+
+        <div
+          className="row"
+          style={{fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)",padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
+          {filteredNotes.length === 0 && "No notes to display"}
+          {filteredNotes.map((note) => (
+            <Noteitem key={note._id} updateNote={updateNote} note={note} />))}
         </div>
       </div>
     </>

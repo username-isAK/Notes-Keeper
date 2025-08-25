@@ -32,17 +32,17 @@ function AppContent({ isAuthenticated, setIsAuthenticated, showAlert, alert }) {
   const location = useLocation();
 
   return (
-    <>
+    <div>
       {location.pathname !== "/login" && location.pathname !== "/signup" && (
         <Navbar setIsAuthenticated={setIsAuthenticated} showAlert={showAlert}/>
       )}
-      <Alert alert={alert} />
+      <div><Alert className="alert-fixed" alert={alert} /></div>
       <Routes>
         <Route path="/" element={isAuthenticated ? (<Notes showAlert={showAlert} />) : (<Navigate to="/login" />)}/>
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} showAlert={showAlert} />} />
         <Route path="/signup" element={<Signup setIsAuthenticated={setIsAuthenticated} showAlert={showAlert} />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
