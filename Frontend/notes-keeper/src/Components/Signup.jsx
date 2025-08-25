@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({setIsAuthenticated, showAlert}) => {
-  const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
+const Signup = ({ setIsAuthenticated, showAlert }) => {
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", confirmPassword: "" });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (credentials.password !== credentials.confirmPassword) {
+      showAlert("Passwords do not match", "danger");
+      return;
+    }
 
     const response = await fetch("http://localhost:5000/api/auth/createuser", {
       method: "POST",
@@ -20,16 +27,13 @@ const Signup = ({setIsAuthenticated, showAlert}) => {
 
     const json = await response.json();
 
-    console.log("Signup response:", json); 
-
     if (json.authtoken) {
       localStorage.setItem("token", json.authtoken);
-      setIsAuthenticated(true)
-      showAlert("Signup Success","success")
+      setIsAuthenticated(true);
+      showAlert("Signup Success", "success");
       navigate("/");
-    }
-    else {
-      showAlert("Signup Failed","danger")
+    } else {
+      showAlert("Signup Failed", "danger");
     }
   };
 
@@ -38,29 +42,71 @@ const Signup = ({setIsAuthenticated, showAlert}) => {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "35rem" }}>
-      <h1 className="container m-3" style={{ fontFamily: 'cursive',textAlign: 'center',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Welcome to Notes Keeper!</h1>
-      <h3 className="m-3" style={{ fontFamily: 'cursive',textAlign: 'center',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Create an Account</h3>
+    <div className="container" style={{maxWidth: "40rem" }}>
+      <h1 className="m-3 text-center" style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
+        Welcome to Notes Keeper!
+      </h1>
+      <h3 className="m-3 text-center" style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
+        Create an Account
+      </h3>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="mb-3">
-          <label htmlFor="name" className="form-label" style={{ fontFamily: 'cursive'}}>Name</label>
-          <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} />
+          <label htmlFor="name" className="form-label" style={{ fontFamily: "cursive" }}>Name</label>
+          <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} required />
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label" style={{ fontFamily: 'cursive'}}>Email</label>
-          <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} />
+          <label htmlFor="email" className="form-label" style={{ fontFamily: "cursive" }}>Email</label>
+          <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} required />
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label" style={{ fontFamily: 'cursive'}}>Password</label>
-          <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={onChange} />
-          <div id="emailHelp" className="form-text">Minimum 8 characters.</div>
+        <div className="mb-3 position-relative">
+          <label htmlFor="password" className="form-label" style={{ fontFamily: "cursive" }}>Password</label>
+          <input
+            type={showPassword ? "text" : "password"}
+            className="form-control"
+            id="password"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+            minLength={8}
+            required
+          />
+          <i
+            className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} position-absolute`}
+            style={{ right: "10px", top: "38px", cursor: "pointer" }}
+            onClick={() => setShowPassword(!showPassword)}
+          ></i>
+          <div id="passwordHelp" className="form-text">Minimum 8 characters.</div>
         </div>
-        <button type="submit" className="btn btn-primary" style={{fontFamily:'cursive'}}><i class="bi bi-person-add"></i>Signup</button>
+        <div className="mb-3 position-relative">
+          <label htmlFor="confirmPassword" className="form-label" style={{ fontFamily: "cursive" }}>Confirm Password</label>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            className="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={credentials.confirmPassword}
+            onChange={onChange}
+            minLength={8}
+            required
+          />
+          <i
+            className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"} position-absolute`}
+            style={{ right: "10px", top: "38px", cursor: "pointer" }}
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+          ></i>
+        </div>
+        <button type="submit" className="btn btn-primary" style={{ fontFamily: "cursive" }}>
+          <i className="bi bi-person-add"></i> Signup
+        </button>
       </form>
       <div className="mt-3 d-flex">
-        <p style={{ fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Already have an account?</p>
-        <button className="btn btn-secondary" onClick={() => navigate("/login")} style={{height:"15%",fontFamily: "cursive"}}>Login</button>
-     </div>
+        <p style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
+          Already have an account?
+        </p>
+        <button className="btn btn-secondary ms-2" onClick={() => navigate("/login")} style={{ fontFamily: "cursive",height:"6vh" }}>
+          Login
+        </button>
+      </div>
     </div>
   );
 };
