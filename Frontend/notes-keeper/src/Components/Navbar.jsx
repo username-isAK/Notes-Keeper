@@ -61,7 +61,7 @@ const Navbar = ({showAlert}) => {
 
           <div className="ms-auto">
               <button onClick={handleLogout} className="btn btn-danger ms-auto" style={{fontFamily: "cursive",
-                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}>
+                fontSize: "clamp(0.8rem, 2vw, 1rem)"}}>
                 <i class="bi bi-box-arrow-in-left"></i>
                 Logout
               </button>

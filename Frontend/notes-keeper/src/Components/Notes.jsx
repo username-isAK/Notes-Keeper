@@ -94,9 +94,9 @@ const Notes = ({showAlert}) => {
             </div>
             <div className="modal-footer">
               <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal" style={{fontFamily: "cursive",
-                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}>Close</button>
+                fontSize: "clamp(0.8rem, 2vw, 1rem)"}}>Close</button>
               <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "cursive",
-                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}><i class="bi bi-pen"></i>Update Note</button>
+                fontSize: "clamp(0.8rem, 2vw, 1rem)"}}><i class="bi bi-pen"></i>Update Note</button>
             </div>
           </div>
         </div>

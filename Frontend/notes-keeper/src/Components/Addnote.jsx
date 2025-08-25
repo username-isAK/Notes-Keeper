@@ -52,7 +52,7 @@ const Addnote = (props) => {
                 </div>
                
                 <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "cursive",
-                fontSize: "clamp(0.5rem, 2vw, 1rem)"}}><i class="bi bi-journal-plus"></i>Add Note</button>
+                fontSize: "clamp(0.8rem, 2vw, 1rem)"}}><i class="bi bi-journal-plus"></i>Add Note</button>
             </form>
         </div>
   )
