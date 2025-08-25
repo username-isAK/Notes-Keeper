@@ -1,16 +1,22 @@
 const connectToMongo = require('./db');
-const express = require('express')
-var cors = require('cors') 
+const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 
 connectToMongo();
-const app = express()
-const port = 5000
 
-app.use(cors())
-app.use(express.json())
+const app = express();
+const port = process.env.PORT || 5000;
 
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/notes', require('./routes/note'))
+app.use(cors({
+    origin: ['http://localhost:5173'],
+    methods: ['GET','POST','PUT','DELETE'],
+    credentials: true
+}));
+
+app.use(express.json());
+
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/notes', require('./routes/note'));
 
 app.listen(port)
