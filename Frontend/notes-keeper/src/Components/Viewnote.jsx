@@ -1,9 +1,8 @@
-import { jsPDF } from "jspdf";
-
 const Viewnote = ({ note, onClose }) => {
   if (!note) return null;
   
-  const exportPDF = () => {
+  const exportPDF = async() => {
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
 
     doc.setFont("helvetica", "bold");
