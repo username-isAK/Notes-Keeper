@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({showAlert}) => {
+const Navbar = ({showAlert,darkMode,setDarkMode}) => {
   const fullText = "A Secure Cloud Based Notes Manager";
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
@@ -35,9 +35,17 @@ const Navbar = ({showAlert}) => {
     navigate("/login");
   };
 
+  const toggleDarkMode=()=>{
+    setDarkMode((prevMode) => {
+    const newMode = !prevMode;
+    localStorage.setItem("darkMode", newMode);
+    return newMode;
+  });
+  };
+
   return (
     <div>
-      <nav className="navbar" style={{width:'auto',backgroundColor:'#fcfaeb'}}>
+      <nav className="navbar" style={{width:'auto'}}>
         <div className="container-fluid d-flex justify-content-between align-items-center flex-wrap">
           <a className="navbar-brand d-flex align-items-center flex-wrap">
             <img
@@ -48,7 +56,7 @@ const Navbar = ({showAlert}) => {
                         height: "clamp(80px, 8vh, 100px)", 
                         objectFit: "contain"}}/>
             <span
-              className="ms-1"
+              className="text ms-1"
               style={{
                 fontFamily: "cursive",
                 fontSize: "clamp(1rem, 2vw, 2rem)",
@@ -58,8 +66,11 @@ const Navbar = ({showAlert}) => {
               {showCursor && <span className="cursor">|</span>}
             </span>
           </a>
-
+          
           <div className="ms-auto">
+              <button onClick={toggleDarkMode} style={{marginRight:'1rem',borderRadius:'50%'}}>
+                {darkMode ? "🌞" : "🌙"}
+              </button>
               <button onClick={handleLogout} className="btn btn-danger ms-auto" style={{fontFamily: "cursive",
                 fontSize: "clamp(0.8rem, 2vw, 1rem)"}}>
                 <i class="bi bi-box-arrow-in-left"></i>

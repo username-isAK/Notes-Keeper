@@ -8,9 +8,70 @@ form {
 }
 
 body{
-   background-image: url('/bgimg.png');
+   background-image: url('/bgimg.jpg');
    background-attachment: fixed;
    background-size: cover;
    background-repeat: repeat;
    background-position: center;
 }
+
+.modal-header{
+  background-color: #fcfaeb;
+}
+
+.corner-tag {
+  position: absolute;
+  top: -10px; 
+  right: -10px; 
+  width: clamp(90px,6vw,110px); 
+  height: clamp(40px,3vh,60px);
+  object-fit: contain;
+}
+
+.darkmode{
+  min-height: 100vh;
+  background-image: url('/bgimgdark.jpg');
+  background-color: rgb(1, 8, 90);
+  background-attachment: fixed;
+   background-size: cover;
+   background-repeat: repeat;
+   background-position: center;
+}
+
+card-body{
+  background-color:#fcfaeb;
+}
+
+.navbar {
+  background-color: #edf8de;
+}
+
+.darkmode .navbar {
+  background-color: rgb(7, 2, 60);
+}
+
+.darkmode .text{
+  color: white;
+}
+
+.darkmode form{
+  background: #494242;
+}
+
+.darkmode .form-label{
+  color: white;
+}
+.darkmode .form-text{
+  color: white;
+}
+
+.darkmode .card{
+  color: white;
+  background: #444141;
+}
+
+.darkmode .modal-header{
+  background: #444141;
+  color: white;
+}
+

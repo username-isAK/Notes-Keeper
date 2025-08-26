@@ -3,7 +3,7 @@ import noteContext from '../context/notecontext';
 import Noteitem from './Noteitem';
 import AddNote from './Addnote';
 
-const Notes = ({showAlert}) => {
+const Notes = ({showAlert,darkMode}) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
 
@@ -58,15 +58,14 @@ const Notes = ({showAlert}) => {
       <div className="modal fade" id="editNoteModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header" style={{backgroundColor: '#fcfaeb' }}>
+            <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel" style={{ fontFamily: 'cursive'}}>Edit Note</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <form className="my-3">
                 <div className="mb-3">
                   <label htmlFor="etitle" className="form-label" style={{ fontFamily: 'cursive'}}>Title</label>
-                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required />
+                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required style={{ fontFamily: 'cursive'}}/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="edescription" className="form-label" style={{ fontFamily: 'cursive'}}>Description</label>
@@ -82,13 +81,14 @@ const Notes = ({showAlert}) => {
                       style={{
                         resize: "vertical",
                         maxHeight: "10rem",
-                        overflowY: "auto"
+                        overflowY: "auto",
+                        fontFamily: 'cursive'
                       }}
                     ></textarea>
               </div>
                 <div className="mb-3">
                   <label htmlFor="etag" className="form-label" style={{ fontFamily: 'cursive'}}>Tag</label>
-                  <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} />
+                  <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} style={{ fontFamily: 'cursive'}}/>
                 </div>
               </form>
             </div>
@@ -116,10 +116,10 @@ const Notes = ({showAlert}) => {
 
         <div
           className="row"
-          style={{fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.8)",padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
+          style={{fontFamily: 'cursive',padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
           {filteredNotes.length === 0 && "No notes to display"}
           {filteredNotes.map((note) => (
-            <Noteitem key={note._id} updateNote={updateNote} note={note} />))}
+            <Noteitem key={note._id} updateNote={updateNote} note={note} darkMode={darkMode}/>))}
         </div>
       </div>
     </>

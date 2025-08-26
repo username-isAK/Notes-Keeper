@@ -28,7 +28,7 @@ const Viewnote = ({ note, onClose }) => {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
  
-          <div className="modal-header d-flex justify-content-between align-items-center" style={{backgroundColor: '#fcfaeb' }}>
+          <div className="modal-header d-flex justify-content-between align-items-center">
             <h5 className="modal-title" style={{ fontFamily: 'cursive'}}>{note.title}</h5>
             <i
               className="bi bi-x-lg"

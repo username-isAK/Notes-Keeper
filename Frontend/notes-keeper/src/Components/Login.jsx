@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
 
-const Login = ({ setIsAuthenticated, showAlert }) => {
+const Login = ({ setIsAuthenticated, showAlert ,darkMode,setDarkMode}) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -29,7 +29,21 @@ const Login = ({ setIsAuthenticated, showAlert }) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  const toggleDarkMode=()=>{
+    setDarkMode((prevMode) => {
+    const newMode = !prevMode;
+    localStorage.setItem("darkMode", newMode);
+    return newMode;
+  });
+  };
+
   return (
+    <>
+    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <button onClick={toggleDarkMode} style={{ marginRight: "1rem", borderRadius: "50%" }}>
+        {darkMode ? "🌞" : "🌙"}
+      </button>
+    </div>
     <div className="container" style={{ maxWidth: "40rem" }}>
       <h1 className="m-3 text-center" style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
         Welcome to Notes Keeper!
@@ -37,7 +51,9 @@ const Login = ({ setIsAuthenticated, showAlert }) => {
       <h3 className="m-3 text-center" style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
         Please Login to continue
       </h3>
+      <div className="form-wrapper position-relative">
       <form onSubmit={handleSubmit} autoComplete="off">
+        <img src="/NK logo.png" alt="tag" className="corner-tag top-right" />
         <div className="mb-3">
           <label htmlFor="email" className="form-label" style={{ fontFamily: "cursive" }}>Email address</label>
           <input
@@ -50,6 +66,7 @@ const Login = ({ setIsAuthenticated, showAlert }) => {
             aria-describedby="emailHelp"
             autoComplete="off"
             required
+            style={{ fontFamily: "cursive" }}
           />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
@@ -65,6 +82,7 @@ const Login = ({ setIsAuthenticated, showAlert }) => {
             id="password"
             autoComplete="new-password"
             required
+            style={{ fontFamily: "cursive" }}
           />
           <i
             className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} position-absolute`}
@@ -77,7 +95,7 @@ const Login = ({ setIsAuthenticated, showAlert }) => {
           <i className="bi bi-box-arrow-in-right"></i> Login
         </button>
       </form>
-
+      </div>
       <div className="mt-3 d-flex">
         <p style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
           Don't have an account?
@@ -87,6 +105,7 @@ const Login = ({ setIsAuthenticated, showAlert }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 
