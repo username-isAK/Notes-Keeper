@@ -116,7 +116,7 @@ const Signup = ({ setIsAuthenticated, showAlert,darkMode,setDarkMode }) => {
           ></i>
         </div>
         <button type="submit" className="btn btn-primary" style={{ fontFamily: "Merienda" }}>
-          <i className="bi bi-person-add"></i> Signup
+          <i className="bi bi-person-plus-fill"></i> Signup
         </button>
       </form>
       </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Deleteacc from "./Deleteacc";
 
 const Navbar = ({showAlert,darkMode,setDarkMode}) => {
   const fullText = "A Secure Cloud Based Notes Manager";
@@ -67,13 +68,14 @@ const Navbar = ({showAlert,darkMode,setDarkMode}) => {
             </span>
           </a>
           
-          <div className="ms-auto">
+          <div className="d-flex flex-wrap ms-auto">
               <button onClick={toggleDarkMode} style={{marginRight:'1rem',borderRadius:'50%'}}>
                 {darkMode ? "🌞" : "🌙"}
               </button>
+              <div style={{marginRight:'1rem'}}><Deleteacc showAlert={showAlert}/></div>
               <button onClick={handleLogout} className="btn btn-danger ms-auto" style={{fontFamily: "Merienda",
                 fontSize: "clamp(0.8rem, 2vw, 1rem)"}}>
-                <i class="bi bi-box-arrow-in-left"></i>
+                <i className="bi bi-box-arrow-in-left"></i>
                 Logout
               </button>
           </div>

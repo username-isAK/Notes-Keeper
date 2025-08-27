@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/User');
+const Note = require('../models/Note');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
@@ -94,6 +95,23 @@ router.post('/getuser', fetchuser,  async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
+  }
+})
+
+router.delete("/deleteuser", fetchuser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    await Note.deleteMany({ user: userId });
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ success: true, message: "Account deleted successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json("Server Error");
   }
 })
 
