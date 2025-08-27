@@ -1,12 +1,14 @@
 import {useState, useContext} from 'react'
 import noteContext from "../context/notecontext"
 import ViewNote from './Viewnote';
+import Confirm from './Confirm';
 
 const Noteitem = (props) => {
     const context = useContext(noteContext);
     const { deleteNote } = context;
     const { note, updateNote } = props;
     const [showView, setShowView] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
 
     const truncate = (text, maxLength) => {
         if (!text) return "";
@@ -29,16 +31,22 @@ const Noteitem = (props) => {
             <div className="card h-100" style={{ boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)' }}>
                 <div className="card-body">
                 <div className="d-flex align-items-center">
-                    <h5 className="card-title me-2" style={{ fontFamily: 'cursive'}}>{truncate(note.title,12)}</h5>
+                    <h5 className="card-title me-2" style={{ fontFamily: 'Merienda'}}>{truncate(note.title,12)}</h5>
                     <i className="bi bi-eye-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowView(true)}}></i>
                     <i className="bi bi-pencil-square mx-2" style={{ cursor: "pointer" }} onClick={()=>{updateNote(note)}}></i>
-                    <i className="bi bi-trash3-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{deleteNote(note._id)}}></i>
+                    <i className="bi bi-trash3-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowConfirm(true)}}></i>
                 </div>
-                <p className="card-text" style={{ fontFamily: 'cursive'}}>{truncate(note.description, 20)}</p>
-                <p className={`${props.darkMode? "text-light":"text-muted"}`} style={{ fontFamily: 'cursive'}}>Created on: {formatDate(note.date)}</p>
+                <p className="card-text" style={{ fontFamily: 'Merienda'}}>{truncate(note.description, 20)}</p>
+                <p className={`${props.darkMode? "text-light":"text-muted"}`} style={{ fontFamily: 'Merienda'}}>Created on: {formatDate(note.date)}</p>
                 </div>
             </div>
             {showView && (<ViewNote note={note} onClose={() => setShowView(false)} />)}
+            {showConfirm && <Confirm show={showConfirm}
+                                onClose={() => setShowConfirm(false)}
+                                onConfirm={() => {
+                                deleteNote(note._id);
+                                setShowConfirm(false);}}
+                                message="Are you sure you want to delete this note?"/>}
         </div>
     )
 }

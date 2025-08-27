@@ -58,7 +58,7 @@ const Navbar = ({showAlert,darkMode,setDarkMode}) => {
             <span
               className="text ms-1"
               style={{
-                fontFamily: "cursive",
+                fontFamily: "Merienda",
                 fontSize: "clamp(1rem, 2vw, 2rem)",
                 whiteSpace: "pre-wrap"
               }}>
@@ -71,7 +71,7 @@ const Navbar = ({showAlert,darkMode,setDarkMode}) => {
               <button onClick={toggleDarkMode} style={{marginRight:'1rem',borderRadius:'50%'}}>
                 {darkMode ? "🌞" : "🌙"}
               </button>
-              <button onClick={handleLogout} className="btn btn-danger ms-auto" style={{fontFamily: "cursive",
+              <button onClick={handleLogout} className="btn btn-danger ms-auto" style={{fontFamily: "Merienda",
                 fontSize: "clamp(0.8rem, 2vw, 1rem)"}}>
                 <i class="bi bi-box-arrow-in-left"></i>
                 Logout

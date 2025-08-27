@@ -59,25 +59,25 @@ const Signup = ({ setIsAuthenticated, showAlert,darkMode,setDarkMode }) => {
       </button>
     </div>
     <div className="container" style={{maxWidth: "40rem" }}>
-      <h1 className="m-3 text-center" style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
+      <h1 className="m-3 text-center" style={{ fontFamily: "Merienda", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
         Welcome to Notes Keeper!
       </h1>
-      <h3 className="m-3 text-center" style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
+      <h3 className="m-3 text-center" style={{ fontFamily: "Merienda", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
         Create an Account
       </h3>
       <div className="form-wrapper position-relative">
       <form onSubmit={handleSubmit} autoComplete="off">
         <img src="/NK logo.png" alt="tag" className="corner-tag top-right" />
         <div className="mb-3">
-          <label htmlFor="name" className="form-label" style={{ fontFamily: "cursive" }}>Name</label>
-          <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} required style={{ fontFamily: "cursive" }}/>
+          <label htmlFor="name" className="form-label" style={{ fontFamily: "Merienda" }}>Name</label>
+          <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} required style={{ fontFamily: "Merienda" }}/>
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label" style={{ fontFamily: "cursive" }}>Email address</label>
-          <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} required style={{ fontFamily: "cursive" }}/>
+          <label htmlFor="email" className="form-label" style={{ fontFamily: "Merienda" }}>Email address</label>
+          <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} required style={{ fontFamily: "Merienda" }}/>
         </div>
         <div className="mb-3 position-relative">
-          <label htmlFor="password" className="form-label" style={{ fontFamily: "cursive" }}>Password</label>
+          <label htmlFor="password" className="form-label" style={{ fontFamily: "Merienda" }}>Password</label>
           <input
             type={showPassword ? "text" : "password"}
             className="form-control"
@@ -87,7 +87,7 @@ const Signup = ({ setIsAuthenticated, showAlert,darkMode,setDarkMode }) => {
             onChange={onChange}
             minLength={8}
             required
-            style={{ fontFamily: "cursive" }}
+            style={{ fontFamily: "Merienda" }}
           />
           <i
             className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} position-absolute`}
@@ -97,7 +97,7 @@ const Signup = ({ setIsAuthenticated, showAlert,darkMode,setDarkMode }) => {
           <div id="passwordHelp" className="form-text">Minimum 8 characters.</div>
         </div>
         <div className="mb-3 position-relative">
-          <label htmlFor="confirmPassword" className="form-label" style={{ fontFamily: "cursive" }}>Confirm Password</label>
+          <label htmlFor="confirmPassword" className="form-label" style={{ fontFamily: "Merienda" }}>Confirm Password</label>
           <input
             type={showConfirmPassword ? "text" : "password"}
             className="form-control"
@@ -107,7 +107,7 @@ const Signup = ({ setIsAuthenticated, showAlert,darkMode,setDarkMode }) => {
             onChange={onChange}
             minLength={8}
             required
-            style={{ fontFamily: "cursive" }}
+            style={{ fontFamily: "Merienda" }}
           />
           <i
             className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"} position-absolute`}
@@ -115,16 +115,16 @@ const Signup = ({ setIsAuthenticated, showAlert,darkMode,setDarkMode }) => {
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
           ></i>
         </div>
-        <button type="submit" className="btn btn-primary" style={{ fontFamily: "cursive" }}>
+        <button type="submit" className="btn btn-primary" style={{ fontFamily: "Merienda" }}>
           <i className="bi bi-person-add"></i> Signup
         </button>
       </form>
       </div>
       <div className="mt-3 d-flex">
-        <p style={{ fontFamily: "cursive", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
+        <p style={{ fontFamily: "Merienda", backgroundColor: "rgba(255,255,255,0.7)", padding: "0.5rem 0.75rem", borderRadius: "1rem" }}>
           Already have an account?
         </p>
-        <button className="btn btn-secondary ms-2" onClick={() => navigate("/login")} style={{ fontFamily: "cursive",height:"6vh" }}>
+        <button className="btn btn-secondary ms-2" onClick={() => navigate("/login")} style={{ fontFamily: "Merienda",height:"6vh" }}>
           Login
         </button>
       </div>

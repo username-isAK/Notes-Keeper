@@ -29,7 +29,7 @@ const Viewnote = ({ note, onClose }) => {
         <div className="modal-content">
  
           <div className="modal-header d-flex justify-content-between align-items-center">
-            <h5 className="modal-title" style={{ fontFamily: 'cursive'}}>{note.title}</h5>
+            <h5 className="modal-title" style={{ fontFamily: 'Merienda'}}>{note.title}</h5>
             <i
               className="bi bi-x-lg"
               style={{ cursor: "pointer", fontSize: "1.2rem" }}
@@ -39,10 +39,10 @@ const Viewnote = ({ note, onClose }) => {
 
           <div className="modal-body">
             {note.description.includes("\n") ? (
-              <ul style={{ fontFamily: 'cursive' }}>
+              <ul style={{ fontFamily: 'Merienda' }}>
                 {note.description.split("\n").map((line, index) => (
-                  <li key={index}>{line}</li>))}</ul>) : (<p style={{ fontFamily: 'cursive' }}>{note.description}</p>)}
-            <small className="text-muted" style={{ fontFamily: 'cursive'}}>{note.tag}</small>
+                  <li key={index}>{line}</li>))}</ul>) : (<p style={{ fontFamily: 'Merienda' }}>{note.description}</p>)}
+            <small className="text-muted" style={{ fontFamily: 'Merienda'}}>{note.tag}</small>
             <div className="modal-footer">
             <button className="btn btn-light" onClick={exportPDF} style={{color:"blue"}}>
               <i class="bi bi-download"></i>

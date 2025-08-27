@@ -59,16 +59,16 @@ const Notes = ({showAlert,darkMode}) => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel" style={{ fontFamily: 'cursive'}}>Edit Note</h5>
+              <h5 className="modal-title" id="exampleModalLabel" style={{ fontFamily: 'Merienda'}}>Edit Note</h5>
             </div>
             <div className="modal-body">
               <form className="my-3">
                 <div className="mb-3">
-                  <label htmlFor="etitle" className="form-label" style={{ fontFamily: 'cursive'}}>Title</label>
-                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required style={{ fontFamily: 'cursive'}}/>
+                  <label htmlFor="etitle" className="form-label" style={{ fontFamily: 'Merienda'}}>Title</label>
+                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required style={{ fontFamily: 'Merienda'}}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="edescription" className="form-label" style={{ fontFamily: 'cursive'}}>Description</label>
+                    <label htmlFor="edescription" className="form-label" style={{ fontFamily: 'Merienda'}}>Description</label>
                     <textarea
                       className="form-control"
                       id="edescription"
@@ -82,20 +82,20 @@ const Notes = ({showAlert,darkMode}) => {
                         resize: "vertical",
                         maxHeight: "10rem",
                         overflowY: "auto",
-                        fontFamily: 'cursive'
+                        fontFamily: 'Merienda'
                       }}
                     ></textarea>
               </div>
                 <div className="mb-3">
-                  <label htmlFor="etag" className="form-label" style={{ fontFamily: 'cursive'}}>Tag</label>
-                  <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} style={{ fontFamily: 'cursive'}}/>
+                  <label htmlFor="etag" className="form-label" style={{ fontFamily: 'Merienda'}}>Tag</label>
+                  <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} style={{ fontFamily: 'Merienda'}}/>
                 </div>
               </form>
             </div>
             <div className="modal-footer">
-              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal" style={{fontFamily: "cursive",
+              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal" style={{fontFamily: "Merienda",
                 fontSize: "clamp(0.8rem, 2vw, 1rem)"}}>Close</button>
-              <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "cursive",
+              <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "Merienda",
                 fontSize: "clamp(0.8rem, 2vw, 1rem)"}}><i class="bi bi-pen"></i>Update Note</button>
             </div>
           </div>
@@ -104,19 +104,19 @@ const Notes = ({showAlert,darkMode}) => {
 
       <div className="container">
         <div className="d-flex flex-wrap justify-content-between align-items-center my-3">
-        <h2 className="mt-4" style={{display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.8)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Your Notes</h2>
+        <h2 className="mt-4" style={{display:'inline-block',fontFamily: 'Merienda',backgroundColor: "rgba(255,255,255,0.8)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Your Notes</h2>
         <input
             type="text"
             className="form-control"
             placeholder="Search notes by title..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{maxWidth: "30rem",width: "100%",display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,1)", padding: "0.5rem 0.75rem", borderRadius: "1rem",boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)'}}/>
+            style={{maxWidth: "30rem",width: "100%",display:'inline-block',fontFamily: 'Merienda',backgroundColor: "rgba(255,255,255,1)", padding: "0.5rem 0.75rem", borderRadius: "1rem",boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)'}}/>
         </div>
 
         <div
           className="row"
-          style={{fontFamily: 'cursive',padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
+          style={{fontFamily: 'Merienda',padding: "0.5rem 0.75rem",borderRadius: "1rem"}}>
           {filteredNotes.length === 0 && "No notes to display"}
           {filteredNotes.map((note) => (
             <Noteitem key={note._id} updateNote={updateNote} note={note} darkMode={darkMode}/>))}

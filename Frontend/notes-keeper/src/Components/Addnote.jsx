@@ -21,14 +21,14 @@ const Addnote = (props) => {
     }
     return (
         <div className="container my-3">
-            <h2 style={{ display:'inline-block',fontFamily: 'cursive',backgroundColor: "rgba(255,255,255,0.8)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Add a Note</h2>
+            <h2 style={{ display:'inline-block',fontFamily: 'Merienda',backgroundColor: "rgba(255,255,255,0.8)", padding: "0.5rem 0.75rem", borderRadius: "1rem"}}>Add a Note</h2>
             <form className="my-3">
                 <div className="mb-3">
-                    <label htmlFor="title" className="form-label fw-bold" style={{ fontFamily: 'cursive'}}>Title</label>
-                    <input style={{fontFamily:'cursive'}}type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" value={note.title} onChange={onChange} minLength={5} required /> 
+                    <label htmlFor="title" className="form-label fw-bold" style={{ fontFamily: 'Merienda'}}>Title</label>
+                    <input style={{fontFamily:'Merienda'}}type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" value={note.title} onChange={onChange} minLength={5} required /> 
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="description" className="form-label fw-bold" style={{ fontFamily: 'cursive'}}>Description</label>
+                    <label htmlFor="description" className="form-label fw-bold" style={{ fontFamily: 'Merienda'}}>Description</label>
                     <textarea
                         className="form-control"
                         id="description"
@@ -42,16 +42,16 @@ const Addnote = (props) => {
                         resize: "vertical",
                         maxHeight: "11rem",
                         overflowY: "auto",
-                        fontFamily:"cursive"
+                        fontFamily:"Merienda"
                         }}
                     ></textarea>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="tag" className="form-label fw-bold" style={{ fontFamily: 'cursive'}}>Tag</label>
-                    <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={5} style={{fontFamily:'cursive'}} required />
+                    <label htmlFor="tag" className="form-label fw-bold" style={{ fontFamily: 'Merienda'}}>Tag</label>
+                    <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={5} style={{fontFamily:'Merienda'}} required />
                 </div>
                
-                <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "cursive",
+                <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick} style={{fontFamily: "Merienda",
                 fontSize: "clamp(0.8rem, 2vw, 1rem)"}}><i class="bi bi-journal-plus"></i>Add Note</button>
             </form>
         </div>
