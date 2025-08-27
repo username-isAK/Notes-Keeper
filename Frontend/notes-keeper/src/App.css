@@ -75,3 +75,7 @@ card-body{
   color: white;
 }
 
+.darkmode .navbar-toggler{
+  border-color: white;
+}
+

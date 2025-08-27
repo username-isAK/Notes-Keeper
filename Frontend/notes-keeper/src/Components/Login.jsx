@@ -40,7 +40,7 @@ const Login = ({ setIsAuthenticated, showAlert ,darkMode,setDarkMode}) => {
   return (
     <>
     <div style={{ display: "flex", justifyContent: "flex-end" }}>
-      <button onClick={toggleDarkMode} style={{ marginRight: "1rem", borderRadius: "50%" }}>
+      <button className="btn" onClick={toggleDarkMode} style={{ marginRight: "1rem", borderRadius: "50%" }}>
         {darkMode ? "🌞" : "🌙"}
       </button>
     </div>
