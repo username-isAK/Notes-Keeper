@@ -72,8 +72,36 @@ const Notestate = ({children, showAlert}) => {
       setNotes(newNotes)
   }
 
+  const togglePin = async (id, currentPinned) => {
+  try {
+    const response = await fetch(`${API_URL}/api/notes/pin/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": getAuthToken()
+      },
+      body: JSON.stringify({ pinned: !currentPinned })
+    });
+
+    const updatedNote = await response.json();
+
+    let newNotes = JSON.parse(JSON.stringify(notes));
+    for (let i = 0; i < newNotes.length; i++) {
+      if (newNotes[i]._id === id) {
+        newNotes[i].pinned = updatedNote.note.pinned;
+        break;
+      }
+    }
+
+    newNotes.sort((a, b) => b.pinned - a.pinned);
+    setNotes(newNotes);
+  } catch (error) {
+    console.error("Failed to toggle pin:", error);
+  }
+};
+
   return (
-    <Notecontext.Provider value={{ notes, addNote, getNotes, editNote, deleteNote }}>
+    <Notecontext.Provider value={{ notes, addNote, getNotes, editNote, deleteNote,togglePin }}>
       {children}
     </Notecontext.Provider>
   )

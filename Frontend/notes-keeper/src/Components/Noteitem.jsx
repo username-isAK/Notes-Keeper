@@ -5,7 +5,7 @@ import Confirm from './Confirm';
 
 const Noteitem = (props) => {
     const context = useContext(noteContext);
-    const { deleteNote } = context;
+    const { deleteNote,togglePin } = context;
     const { note, updateNote } = props;
     const [showView, setShowView] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
@@ -26,6 +26,7 @@ const Noteitem = (props) => {
         return `${day}-${month}-${year} at ${hours}:${minutes}:${seconds}`;
     };
 
+
     return (
         <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
             <div className="card h-100" style={{ boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)' }}>
@@ -35,6 +36,7 @@ const Noteitem = (props) => {
                     <i className="bi bi-eye-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowView(true)}}></i>
                     <i className="bi bi-pencil-square mx-2" style={{ cursor: "pointer" }} onClick={()=>{updateNote(note)}}></i>
                     <i className="bi bi-trash3-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowConfirm(true)}}></i>
+                    <i className={`bi ${note.pinned ? "bi-pin-fill" : "bi-pin"} mx-2`} style={{ cursor: "pointer" }} onClick={() => togglePin(note._id, note.pinned)}></i>
                 </div>
                 <p className="card-text" style={{ fontFamily: 'Merienda'}}>{truncate(note.description, 20)}</p>
                 <p className={`${props.darkMode? "text-light":"text-muted"}`} style={{ fontFamily: 'Merienda'}}>Created on: {formatDate(note.date)}</p>

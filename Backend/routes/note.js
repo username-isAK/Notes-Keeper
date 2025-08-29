@@ -76,4 +76,21 @@ router.delete('/deletenote/:id', fetchuser, async (req, res) => {
     }
 })
 
+router.put('/pin/:id', fetchuser, async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const note = await Note.findById(noteId);
+
+    if (!note) return res.status(404).json({ error: "Note not found" });
+
+    note.pinned = !note.pinned;
+    await note.save();
+
+    res.json({ success: true, note });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports= router
