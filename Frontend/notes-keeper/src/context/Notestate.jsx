@@ -8,6 +8,15 @@ const Notestate = ({children, showAlert}) => {
 
   const getAuthToken = () => localStorage.getItem("token")
 
+  const sortNotes = (notesArray) => {
+  return notesArray.sort((a, b) => {
+    if (b.pinned && !a.pinned) return 1;
+    if (a.pinned && !b.pinned) return -1;
+    return new Date(b.date) - new Date(a.date);
+  });
+};
+
+
   const getNotes = async () => {
     const response = await fetch(`${API_URL}/api/notes/fetchallnotes`, {
       method: 'GET',
@@ -16,8 +25,13 @@ const Notestate = ({children, showAlert}) => {
         "auth-token": getAuthToken()
       }
     });
+    try{
     const json = await response.json()
-    setNotes(json)
+    setNotes(sortNotes(json))
+    }
+    catch{
+      showAlert("Failed to fetch notes","danger")
+    }
   }
 
   const addNote = async (title, description, tag) => {
@@ -69,7 +83,7 @@ const Notestate = ({children, showAlert}) => {
           break;
         }
       }
-      setNotes(newNotes)
+      setNotes(sortNotes(newNotes))
   }
 
   const togglePin = async (id, currentPinned) => {
@@ -93,8 +107,7 @@ const Notestate = ({children, showAlert}) => {
       }
     }
 
-    newNotes.sort((a, b) => b.pinned - a.pinned);
-    setNotes(newNotes);
+    setNotes(sortNotes(newNotes));
   } catch (error) {
     console.error("Failed to toggle pin:", error);
   }

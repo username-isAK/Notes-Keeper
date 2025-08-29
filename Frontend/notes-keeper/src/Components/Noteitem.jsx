@@ -32,7 +32,7 @@ const Noteitem = (props) => {
             <div className="card h-100" style={{ boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)' }}>
                 <div className="card-body">
                 <div className="d-flex align-items-center">
-                    <h5 className="card-title me-2" style={{ fontFamily: 'Merienda'}}>{truncate(note.title,12)}</h5>
+                    <h5 className="card-title me-2" style={{ fontFamily: 'Merienda'}}>{truncate(note.title,9)}</h5>
                     <i className="bi bi-eye-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowView(true)}}></i>
                     <i className="bi bi-pencil-square mx-2" style={{ cursor: "pointer" }} onClick={()=>{updateNote(note)}}></i>
                     <i className="bi bi-trash3-fill mx-2" style={{ cursor: "pointer" }} onClick={()=>{setShowConfirm(true)}}></i>
